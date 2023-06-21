@@ -54,12 +54,12 @@ summary_coef <- summary(model)$coefficients
 
 #predict
 
-preds <- predict.glm(model, test, type = c("response"))
+pred <- predict.glm(model, test, type = c("response"))
 view(prediction_probs)
 view(pred)
 
 #convert predictions to 1 or 0
-prediction_probs <- ifelse(pred > 0.5, 1, 0)
+prediction_probs <- ifelse(preds > 0.5, 1, 0)
 
 #EVALUATION
 #Create a confusion matrix
@@ -98,8 +98,8 @@ ggplot(test, aes(x=pred, y=medianIncome, color = voteBrexit)) +
   scale_color_gradient(low = "#ffee00", high = "#00b3ff") +
   theme_classic() +
   coord_fixed(xlim = c(0, 1), ylim = c(0, 1)) + # set fixed axis ranges
-  geom_vline(xintercept = 0.5, color = "gray", alpha = 0.5) + # add vertical line at x-mean
-  geom_hline(yintercept = 0.5, color = "gray", alpha = 0.25) # add horizontal line at y-mean
+  geom_vline(xintercept = 0.5, color = "gray", alpha = 0.25) + # add vertical line at x-mean
+  geom_hline(yintercept = 0.5, color = "gray", alpha = 0.1) # add horizontal line at y-mean
   
 theme(panel.grid.major = element_blank(), # remove major grid lines
         panel.grid.minor = element_blank(), # remove minor grid lines
@@ -158,4 +158,4 @@ prediction_conv <- ifelse(predictions_new > 0.5, 1, 0)
 #Create a confusion matrix
 cm2 <- confusionMatrix(table(test_reduced$voteBrexit, prediction_conv))
 cm2$overall["Accuracy"]
-
+cm2
