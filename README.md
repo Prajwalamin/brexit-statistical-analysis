@@ -23,8 +23,7 @@ The data contains 6 variables including the output variable '*voteBrexit* which 
 In the tasks below, we will fit a logistic regression model, explore the coefficients which have greater effect on the output, discuss the difficulties faced in interpreting these coefficients of the model and finally adapt an alternative approach to overcome these difficulties. 
 
 
-# Task 1
-
+# Logistic Regression model
 
 In this task we will fit a logistic regression model to the data to model the outcome of *voteBrexit* using all inputs. Through the  summary of the model, will find the direction and magnitude of each of the inputs. Out of which, we will also identify the inputs having strong effects on the outcome. Finally, we will discuss about the findings of the model and compare them with the plots featured on the Guardian.
 
@@ -167,7 +166,7 @@ Overall, *withHigherEd* seems like a good predictor for *voteBrexit*. In compari
 
 
 
-## Task 2
+# Factors affecting interpretability
 
 Since we have used a logistic regression model, there are certain factors that affect the interpretability of the coefficients fitted to the model, these are:
 
@@ -193,7 +192,7 @@ library(car)
 vif(model)
 
 ```
-![](./img/vif.png)
+![](./img/vif1.png)
 
 Here, it is clearly noticeable that the VIF values for *abc1* and *withHigherEd* is above 5 which is considered to be as normal. This indicates that these two variables have high collinearity with the output. In Contrary, the other features have low VIF values which shows that they have greater independence on predicting the outcome. 
 
@@ -217,19 +216,15 @@ The individuals belonging to different socioeconomic groups possess different po
 As always these observations are subjective and the actual ordering varies in different scenarios. Moreover, factors such as sample size, linearity and normalization could also influence the ranking of these variables. In the upcoming task, we will deal with this problem of misinterpretation of the variables by following a alternative approach resolving the issue of **collinearity**.
 
 
-## Task 3
+# Addressing Collinearity
 
 An alternative approach to carry out the analysis for task 1 would be to create another logistic regression model, however by excluding the variables which are subject to collinearity. Out of the variables we observed: *abc1* and *withHigherEd*, we will only remove *abc1* while training the model because even though *withHigherEd* is higlhy correlated it also a good predictor of the output compared to the rest of the variables.
 
 We will create a subset of the data by removing the *abc1* column using *dplyr* package
 
-```{r dplyr}
+``` r
 
 library(dplyr) 
-
-```
-
-```{r remove}
 
 # Removing 'abc1' column from the dataset
 brexit_reduced <- select(brexit, -abc1)
@@ -238,7 +233,7 @@ brexit_reduced <- select(brexit, -abc1)
 
 We will split the data once again using the same split (80:20).
 
-```{r splitting}
+``` r
 
 # Splitting the data into training & testing (80:20)
 set.seed(2)
@@ -249,20 +244,19 @@ test_reduced <- subset(brexit_reduced, split == "FALSE")
 
 Now we can fit the model using training data
 
-```{r logmodel}
+``` r
 
 # Training the model
 model_new <- glm(voteBrexit ~ ., data = train_reduced, family = "binomial")
-
-```
-
-```{r summarize}
 summary(model_new)
 ```
+![](./img/logsum2.png)
 
-```{r viff}
+``` r
 vif(model_new)
+
 ```
+![](./img/vif2.png)
 
 The VIF values for all the variables are low, and surprisingly, notice that *withHigherEd* has also reduced.
 
@@ -270,7 +264,7 @@ The VIF values for all the variables are low, and surprisingly, notice that *wit
 
 We can now use this model to make predictions, then evaluate the model performance using confusion matrix.
 
-```{r predictions}
+``` r
 
 # Making predictions
 predictions_new <- predict(model_new, newdata = test_reduced, type = "response")
@@ -280,12 +274,10 @@ prediction_conv <- ifelse(predictions_new > 0.5, 1, 0)
 
 # Evaluate using confusion matrix
 cm2 <- confusionMatrix(table(test_reduced$voteBrexit, prediction_conv))
-cm2$table
-
-cm2$overall["Accuracy"]
+cm2
 
 ```
-
+![](./img/cm2.png)
 
 This signifies that the number of instances which have been correctly classified is less compared to the model from task 1. The accuracy of both the models proves this as the former model produced $\approx 87 \%$ and the latter $\approx 81 \%$. The second model was trained with fewer variables to avoid collinearity, which might be the reason in achieving less accuracy, thus making the model less dependable in making predictions.
 
