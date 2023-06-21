@@ -23,13 +23,13 @@ The data contains 6 variables including the output variable '*voteBrexit* which 
 In the tasks below, we will fit a logistic regression model, explore the coefficients which have greater effect on the output, discuss the difficulties faced in interpreting these coefficients of the model and finally adapt an alternative approach to overcome these difficulties. 
 
 
-## Task 1
+# Task 1
 
 
 In this task we will fit a logistic regression model to the data to model the outcome of *voteBrexit* using all inputs. Through the  summary of the model, will find the direction and magnitude of each of the inputs. Out of which, we will also identify the inputs having strong effects on the outcome. Finally, we will discuss about the findings of the model and compare them with the plots featured on the Guardian.
 
 
-# Configure R and loading the data
+## Configure R and loading the data
 
 ``` r
 # Libraries
@@ -112,11 +112,11 @@ We will evaluate using **confusion matrix** metric from *caret* package which al
 
 # Create a confusion matrix
 cm <- confusionMatrix(table(test$voteBrexit, prediction_probs))
-cm$table
-
-cm$overall["Accuracy"]
+cm
 
 ```
+
+![](./img/cf1.png) 
 
 The TP and TN rate is high and the accuracy is $\approx 87 \%$ which is satisfactory for this model.
 
@@ -125,7 +125,7 @@ The TP and TN rate is high and the accuracy is $\approx 87 \%$ which is satisfac
 The predictions contain the probability of each electoral ward voting for Brexit.
 Hence, using the predictions, we can visualize and model the output for each of the inputs. First we will use *withHigherEd* variable against the model predictions to identify any patterns that is evident. We will also imagine a decision boundary so that if probability is $> 0.5$, the individual is likely to vote and if it is $< 0.5$ he will not.
 
-```{r plot, echo=FALSE}
+``` r
 
 # Plotting withHigherEd against Predictions.
 ggplot(test, aes(x=pred, y=withHigherEd, color = voteBrexit)) + 
@@ -137,14 +137,13 @@ ggplot(test, aes(x=pred, y=withHigherEd, color = voteBrexit)) +
   coord_fixed(xlim = c(0, 1), ylim = c(0, 1)) + # set fixed axis ranges
   geom_vline(xintercept = 0.5, color = "gray", alpha = 0.5) + # add vertical line at x-mean
   geom_hline(yintercept = 0.5, color = "gray", alpha = 0.1) # add horizontal line at y-mean
-
-
-
+  
 ```
+![](./img/plot_deg.jpeg) 
 
 The graph clearly shows that a ward with less than 50% of people with higher degree, is more likely to vote for leave. The correlation of the variables is strongly negative ($\approx -0.79$).
 
-```{r plot income, echo=FALSE}
+``` r
 
 # Plotting withHigherEd against Predictions.
 ggplot(test, aes(x=pred, y=medianIncome, color = voteBrexit)) + 
@@ -159,6 +158,8 @@ ggplot(test, aes(x=pred, y=medianIncome, color = voteBrexit)) +
   geom_hline(yintercept = 0.5, color = "gray", alpha = 0.1) # add horizontal line at y-mean
 
 ```
+
+![](./img/plot_inc.jpeg) 
 
 
 Overall, *withHigherEd* seems like a good predictor for *voteBrexit*. In comparison to the findings featured on the Guardian website, it appears that their plots agree with the plots produced in this report and the difference is insignificant. The possible reasons for the patterns to vary might be due to the data that has been used to generate the plots or adapting different approaches in training the model. Further, the data points plotted on the website are classified much accurately compared to this report.
@@ -187,18 +188,12 @@ Although, it is discussed in *Task 1* that the coefficients are interpreted in s
 
 Further, taking into account the factors mentioned above, it is not always reliable to determine the input variables based on their decreasing effect on the output. If done so there might be some uncertainty in the ordering. However, there is one approach through which we can address the concept of **collinearity**. For this, we will use **VIF** (Variance Inflation Factor) from the *car* package.
 
-```{r loadin}
-
+``` r
 library(car)
-
-```
-
-
-```{r vif}
-
 vif(model)
 
 ```
+![](./img/vif.png)
 
 Here, it is clearly noticeable that the VIF values for *abc1* and *withHigherEd* is above 5 which is considered to be as normal. This indicates that these two variables have high collinearity with the output. In Contrary, the other features have low VIF values which shows that they have greater independence on predicting the outcome. 
 
