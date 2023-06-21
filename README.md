@@ -7,7 +7,8 @@ Prajwal Amin
 
 In 2016, The UK had a national referendum to decide wether the country should leave or remain in the EU ('Brexit'). This was declared through an election where votes came from different wards comprising of certain proportion of people across England, Scotland and Wales. 
 
-![EU Referendum Results Map (The Guardian, 2016)](brexit_map.png){ width=50% }
+![](./img/brexit_map.png) 
+
 
 The Guardian newspaper presented some trends in modelling the outcome of voting. They have done the analysis but stopped at presenting the results graphically and commenting on the apparent patterns. Hence, we will use their analysis to compare our findings and perform some statistical analysis on the data. 
 
@@ -49,7 +50,7 @@ brexit$voteBrexit <- as.numeric(brexit$voteBrexit)
 
 We will first split the data into training and testing using the ratio of 80:20. Then, will apply *train* data while training the model and *test* data for evaluation.
 
-```{r train & test}
+``` r
 # Splitting the data (80:20 ratio).
 set.seed(2)
 split <- sample.split(brexit, SplitRatio = 0.8)
@@ -61,13 +62,15 @@ test <- subset(brexit, split == "FALSE")
 
 We will be using **glm** command in R to fit the data to the model. The "." (dot) indicates that all variables except *voteBrexit* to be used as inputs. Additionaly, *family = "binomial"* specifies the model to perform logistic regression.
 
-```{r}
+``` r
 
 # Training the model
 model <- glm(voteBrexit ~ ., family = binomial, data = train)
 summary(model)
 
 ```
+
+![](./img/logsum1.png) 
 
 The estimates of the coefficients given by the model can be used to determine the magnitude and direction for each of the inputs. The magnitude indicates the strength of the impact a variable has on the outcome, whereas direction is whether an impact is positive or negative. Hence, given below are the inputs ranked on decreasing order of magnitude.\
 
@@ -93,7 +96,7 @@ Apart from this, we can also observe that **p-value** for all of the inputs are 
 
 In order to evaluate the model we will first need to perform predictions using the trained model. Note that, while making predictions *test* data will be used.
 
-```{r predict}
+``` r
 # Making predictions
 pred <- predict.glm(model,test, type = c("response"))
 
@@ -105,7 +108,7 @@ prediction_probs <- ifelse(pred > 0.5, 1, 0)
 We will evaluate using **confusion matrix** metric from *caret* package which also provides the accuracy for the model.
 
 
-```{r evaluate}
+``` r
 
 # Create a confusion matrix
 cm <- confusionMatrix(table(test$voteBrexit, prediction_probs))
