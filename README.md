@@ -277,7 +277,7 @@ cm2 <- confusionMatrix(table(test_reduced$voteBrexit, prediction_conv))
 cm2
 
 ```
-![](./img/cm2.png)
+![](./img/cf2.png)
 
 This signifies that the number of instances which have been correctly classified is less compared to the model from task 1. The accuracy of both the models proves this as the former model produced $\approx 87 \%$ and the latter $\approx 81 \%$. The second model was trained with fewer variables to avoid collinearity, which might be the reason in achieving less accuracy, thus making the model less dependable in making predictions.
 
