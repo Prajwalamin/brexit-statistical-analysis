@@ -1,6 +1,5 @@
 
 # Logistic Regression on Brexit
-===============
 Prajwal Amin
 
 
