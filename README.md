@@ -70,6 +70,8 @@ summary(model)
 
 ```
 
+![](./img/logsum1.png) 
+
 The estimates of the coefficients given by the model can be used to determine the magnitude and direction for each of the inputs. The magnitude indicates the strength of the impact a variable has on the outcome, whereas direction is whether an impact is positive or negative. Hence, given below are the inputs ranked on decreasing order of magnitude.\
 
 **1. withHigherEd:** 
