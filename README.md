@@ -6,7 +6,7 @@ Prajwal Amin
 
 In 2016, The UK had a national referendum to decide wether the country should leave or remain in the EU ('Brexit'). This was declared through an election where votes came from different wards comprising of certain proportion of people across England, Scotland and Wales. 
 
-![](./img/brexit_map.png){: width='200' height='500'} 
+![](./img/brexit_map.png){: width="200" height="600"} 
 
 
 The Guardian newspaper presented some trends in modelling the outcome of voting. They have done the analysis but stopped at presenting the results graphically and commenting on the apparent patterns. Hence, we will use their analysis to compare our findings and perform some statistical analysis on the data. 
