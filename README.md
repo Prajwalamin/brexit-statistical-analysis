@@ -28,6 +28,7 @@ The data contains 6 variables including the output variable '*voteBrexit* which 
 
 In the tasks below, we will fit a logistic regression model, explore the coefficients which have greater effect on the output, discuss the difficulties faced in interpreting these coefficients of the model and finally adapt an alternative approach to overcome these difficulties. 
 
+# Section 2
 
 # Logistic Regression Model
 
