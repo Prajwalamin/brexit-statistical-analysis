@@ -8,6 +8,7 @@ Prajwal Amin
 Index
 -----
 
+- [Introduction](#introduction)
 - [Logistic Regression ](#logistic-regression)
     - [Configuring](#Configuring-R-and-data)
     - [Evaluation](#Evaluation)
@@ -17,6 +18,8 @@ Index
 
   <br/>
 
+
+# Introduction
 
 In 2016, The UK had a national referendum to decide wether the country should leave or remain in the EU ('Brexit'). This was declared through an election where votes came from different wards comprising of certain proportion of people across England, Scotland and Wales. 
 
@@ -35,7 +38,6 @@ The data contains 6 variables including the output variable '*voteBrexit* which 
 
 In the tasks below, we will fit a logistic regression model, explore the coefficients which have greater effect on the output, discuss the difficulties faced in interpreting these coefficients of the model and finally adapt an alternative approach to overcome these difficulties. 
 
-# Section 2
 
 # Logistic Regression 
 
