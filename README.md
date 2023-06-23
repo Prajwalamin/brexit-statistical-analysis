@@ -6,7 +6,7 @@ Prajwal Amin
 # Index
 
 - [Logistic Regression Model](#section-1)
-- [Section 2](#section-2)
+- [Section 2](#s)
 - [Section 3](#section-3)
 
 
