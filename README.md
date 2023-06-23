@@ -6,7 +6,7 @@ Prajwal Amin
 # Index
 
 - [Logistic Regression ](#logistic-regression)
-    - [Configuring](#Configuring-data-and-R)
+    - [Configuring](#Configuring-R-and-data)
     - [Evaluation](#Evaluation)
     - [Visualization](#Visualization)
 - [Factors affecting nterpretability](#factors-affecting-interpretability)
