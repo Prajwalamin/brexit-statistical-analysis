@@ -6,7 +6,7 @@ Prajwal Amin
 # Index
 
 - [Logistic Regression ](#logistic-regression)
-    - [Configuration](Configure-R-and-loading-the-data)
+    - [Configuring](#Configure-data-and-R)
     - [Evaluation](#Evaluation)
     - [Visualization](#Visualization)
 - [Factors affecting nterpretability](#factors-affecting-interpretability)
@@ -37,7 +37,7 @@ In the tasks below, we will fit a logistic regression model, explore the coeffic
 In this task we will fit a logistic regression model to the data to model the outcome of *voteBrexit* using all inputs. Through the  summary of the model, will find the direction and magnitude of each of the inputs. Out of which, we will also identify the inputs having strong effects on the outcome. Finally, we will discuss about the findings of the model and compare them with the plots featured on the Guardian.
 
 
-## Configure R and loading the data
+## Configuring R and data
 
 ``` r
 # Libraries
