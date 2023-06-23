@@ -3,7 +3,7 @@
 Prajwal Amin
 
 
-## Index
+# Index
 
 - [Logistic Regression Model](#section-1)
 - [Section 2](#section-2)
