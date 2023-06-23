@@ -5,10 +5,12 @@ Prajwal Amin
 
 # Index
 
-- [Logistic Regression Model](#logistic regression model)
-- [Section 2](#s)
-- [Section 3](#section-3)
-
+- [Logistic Regression ](#logistic-regression)
+    - [Configuration](Configure-R-and-loading-the-data)
+    - [Evaluation](#Evaluation)
+    - [Visualization](#Visualization)
+- [Factors affecting nterpretability](#factors-affecting-interpretability)
+- [Addressing Collinearity](#addressing-collinearity)
 
 
 In 2016, The UK had a national referendum to decide wether the country should leave or remain in the EU ('Brexit'). This was declared through an election where votes came from different wards comprising of certain proportion of people across England, Scotland and Wales. 
@@ -30,7 +32,7 @@ In the tasks below, we will fit a logistic regression model, explore the coeffic
 
 # Section 2
 
-# Logistic Regression Model
+# Logistic Regression 
 
 In this task we will fit a logistic regression model to the data to model the outcome of *voteBrexit* using all inputs. Through the  summary of the model, will find the direction and magnitude of each of the inputs. Out of which, we will also identify the inputs having strong effects on the outcome. Finally, we will discuss about the findings of the model and compare them with the plots featured on the Guardian.
 
@@ -126,7 +128,7 @@ cm
 
 The TP and TN rate is high and the accuracy is $\approx 87 \%$ which is satisfactory for this model.
 
-## Plotting the data
+## Visualization
 
 The predictions contain the probability of each electoral ward voting for Brexit.
 Hence, using the predictions, we can visualize and model the output for each of the inputs. First we will use *withHigherEd* variable against the model predictions to identify any patterns that is evident. We will also imagine a decision boundary so that if probability is $> 0.5$, the individual is likely to vote and if it is $< 0.5$ he will not.
