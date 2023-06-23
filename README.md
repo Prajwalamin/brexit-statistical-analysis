@@ -3,7 +3,8 @@
 Prajwal Amin
 
 
-# Index
+Index
+-----
 
 - [Logistic Regression ](#logistic-regression)
     - [Configuring](#Configuring-R-and-data)
