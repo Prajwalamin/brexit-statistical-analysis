@@ -3,6 +3,13 @@
 Prajwal Amin
 
 
+## Index
+
+- [Logistic Regression Model](#section-1)
+- [Section 2](#section-2)
+- [Section 3](#section-3)
+
+
 
 In 2016, The UK had a national referendum to decide wether the country should leave or remain in the EU ('Brexit'). This was declared through an election where votes came from different wards comprising of certain proportion of people across England, Scotland and Wales. 
 
@@ -22,7 +29,7 @@ The data contains 6 variables including the output variable '*voteBrexit* which 
 In the tasks below, we will fit a logistic regression model, explore the coefficients which have greater effect on the output, discuss the difficulties faced in interpreting these coefficients of the model and finally adapt an alternative approach to overcome these difficulties. 
 
 
-# Logistic Regression model
+# Logistic Regression Model
 
 In this task we will fit a logistic regression model to the data to model the outcome of *voteBrexit* using all inputs. Through the  summary of the model, will find the direction and magnitude of each of the inputs. Out of which, we will also identify the inputs having strong effects on the outcome. Finally, we will discuss about the findings of the model and compare them with the plots featured on the Guardian.
 
