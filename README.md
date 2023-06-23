@@ -15,6 +15,8 @@ Index
 - [Factors affecting nterpretability](#factors-affecting-interpretability)
 - [Addressing Collinearity](#addressing-collinearity)
 
+  <br/>
+
 
 In 2016, The UK had a national referendum to decide wether the country should leave or remain in the EU ('Brexit'). This was declared through an election where votes came from different wards comprising of certain proportion of people across England, Scotland and Wales. 
 
