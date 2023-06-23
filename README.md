@@ -5,7 +5,7 @@ Prajwal Amin
 
 # Index
 
-- [Logistic Regression Model](#logistic-regression-mosdel)
+- [Logistic Regression Model](#logistic regression model)
 - [Section 2](#s)
 - [Section 3](#section-3)
 
